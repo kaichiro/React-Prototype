@@ -1,7 +1,6 @@
 import React from "react";
-// import { Link, Route } from "react-router-dom";
 
-// const User = ({ match }) => <p>{match.params.id}</p>;
+import FormClientComponent from "./semantic/FormClientComponent";
 
 class Users extends React.Component {
   onSubmit = () => {
@@ -9,11 +8,9 @@ class Users extends React.Component {
   };
   render() {
     return (
-      <form>
-        <input placeholder="name" type="name" />
-        <input placeholder="email" type="email" />
-        <button onClick={this.onSubmit}>Submit</button>
-      </form>
+      <div>
+        <FormClientComponent />
+      </div>
     );
   }
 }

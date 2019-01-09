@@ -1,62 +1,112 @@
 import * as React from "react";
 import { Card } from "semantic-ui-react";
 
-import Products from "src/services/ProductsServices";
 import CardComponent from "../card/CardComponent";
 
-const prods = Products;
-
-// tslint:disable-next-line:only-arrow-functions
-prods.forEach(function(prod) {
-  // tslint:disable-next-line:no-unused-expression
-  <CardComponent
-    image={prod.Product.image}
-    description={prod.Product.description}
-    oldPrice={prod.Product.oldPrice}
-    detail={prod.Product.detail}
-    newPrice={prod.Product.newPrice}
-    plots={prod.Product.plots}
-    rating={prod.Product.rating}
-  />;
-});
+// const Products = [
+//   {
+//     description: "Mochila Dell Professional - 15,6''",
+//     oldPrice: "R$ 178,99",
+//     // tslint:disable-next-line:object-literal-sort-keys
+//     image:
+//       "https://i.dell.com/das/xa.ashx/global-site-design%20WEB/27483abe-314a-2e35-b584-c09a4f61fa30/1/OriginalPng?id=Dell/Product_Images/Peripherals/Carrying_Cases/Backpacks/dell-professional-backpack-15-hero-504x350.jpg",
+//     newPrice: "149,99",
+//     plots: "2 x 74,99",
+//     rating: 3
+//   },
+//   {
+//     description: "Mochila com Rodas Swiss Digital 17''",
+//     oldPrice: "R$ 288,99",
+//     // tslint:disable-next-line:object-literal-sort-keys
+//     image:
+//       "https://snpi.dell.com/snp/images2/300/pt-br~AA188364_V1/AA188364_V1.jpg",
+//     newPrice: "199,99",
+//     plots: "3 x 66,66",
+//     rating: 2
+//   }
+// ];
 
 const CardGroupComponent = () => (
-  <Card.Group stackable={true} centered={true} itemsPerRow={4}>
+  <Card.Group stackable={true} centered={true} itemsPerRow={5}>
     <CardComponent
-      image={prods[0].Product.image}
-      description={prods[0].Product.description}
-      oldPrice={prods[0].Product.oldPrice}
-      detail={prods[0].Product.detail}
-      newPrice={prods[0].Product.newPrice}
-      plots={prods[0].Product.plots}
-      rating={prods[0].Product.rating}
+      description="Mochila Dell Professional - 15,6''"
+      oldPrice="R$ 178,99"
+      image="https://i.dell.com/das/xa.ashx/global-site-design%20WEB/27483abe-314a-2e35-b584-c09a4f61fa30/1/OriginalPng?id=Dell/Product_Images/Peripherals/Carrying_Cases/Backpacks/dell-professional-backpack-15-hero-504x350.jpg"
+      newPrice="149,99"
+      plots="2 x 74,99"
+      rating={3}
     />
     <CardComponent
-      image={prods[1].Product.image}
-      description={prods[1].Product.description}
-      oldPrice={prods[1].Product.oldPrice}
-      detail={prods[1].Product.detail}
-      newPrice={prods[1].Product.newPrice}
-      plots={prods[1].Product.plots}
-      rating={prods[1].Product.rating}
+      description="Mochila com Rodas Swiss Digital 17''"
+      oldPrice="R$ 288,99"
+      image="https://snpi.dell.com/snp/images2/300/pt-br~AA188364_V1/AA188364_V1.jpg"
+      newPrice="199,99"
+      plots="3 x 66,66"
+      rating={2}
     />
     <CardComponent
-      image={prods[2].Product.image}
-      description={prods[2].Product.description}
-      oldPrice={prods[2].Product.oldPrice}
-      detail={prods[2].Product.detail}
-      newPrice={prods[2].Product.newPrice}
-      plots={prods[2].Product.plots}
-      rating={prods[2].Product.rating}
+      description="Mochila Dell Professional - 15,6''"
+      oldPrice="R$ 178,99"
+      image="https://i.dell.com/das/xa.ashx/global-site-design%20WEB/27483abe-314a-2e35-b584-c09a4f61fa30/1/OriginalPng?id=Dell/Product_Images/Peripherals/Carrying_Cases/Backpacks/dell-professional-backpack-15-hero-504x350.jpg"
+      newPrice="149,99"
+      plots="2 x 74,99"
+      rating={3}
     />
     <CardComponent
-      image={prods[3].Product.image}
-      description={prods[3].Product.description}
-      oldPrice={prods[3].Product.oldPrice}
-      detail={prods[3].Product.detail}
-      newPrice={prods[3].Product.newPrice}
-      plots={prods[3].Product.plots}
-      rating={prods[3].Product.rating}
+      description="Mochila com Rodas Swiss Digital 17''"
+      oldPrice="R$ 288,99"
+      image="https://snpi.dell.com/snp/images2/300/pt-br~AA188364_V1/AA188364_V1.jpg"
+      newPrice="199,99"
+      plots="3 x 66,66"
+      rating={2}
+    />
+    <CardComponent
+      description="Mochila Dell Professional - 15,6''"
+      oldPrice="R$ 178,99"
+      image="https://i.dell.com/das/xa.ashx/global-site-design%20WEB/27483abe-314a-2e35-b584-c09a4f61fa30/1/OriginalPng?id=Dell/Product_Images/Peripherals/Carrying_Cases/Backpacks/dell-professional-backpack-15-hero-504x350.jpg"
+      newPrice="149,99"
+      plots="2 x 74,99"
+      rating={3}
+    />
+    <CardComponent
+      description="Mochila com Rodas Swiss Digital 17''"
+      oldPrice="R$ 288,99"
+      image="https://snpi.dell.com/snp/images2/300/pt-br~AA188364_V1/AA188364_V1.jpg"
+      newPrice="199,99"
+      plots="3 x 66,66"
+      rating={2}
+    />
+    <CardComponent
+      description="Mochila Dell Professional - 15,6''"
+      oldPrice="R$ 178,99"
+      image="https://i.dell.com/das/xa.ashx/global-site-design%20WEB/27483abe-314a-2e35-b584-c09a4f61fa30/1/OriginalPng?id=Dell/Product_Images/Peripherals/Carrying_Cases/Backpacks/dell-professional-backpack-15-hero-504x350.jpg"
+      newPrice="149,99"
+      plots="2 x 74,99"
+      rating={3}
+    />
+    <CardComponent
+      description="Mochila com Rodas Swiss Digital 17''"
+      oldPrice="R$ 288,99"
+      image="https://snpi.dell.com/snp/images2/300/pt-br~AA188364_V1/AA188364_V1.jpg"
+      newPrice="199,99"
+      plots="3 x 66,66"
+      rating={2}
+    />
+    <CardComponent
+      description="Mochila Dell Professional - 15,6''"
+      oldPrice="R$ 178,99"
+      image="https://i.dell.com/das/xa.ashx/global-site-design%20WEB/27483abe-314a-2e35-b584-c09a4f61fa30/1/OriginalPng?id=Dell/Product_Images/Peripherals/Carrying_Cases/Backpacks/dell-professional-backpack-15-hero-504x350.jpg"
+      newPrice="149,99"
+      plots="2 x 74,99"
+      rating={3}
+    />
+    <CardComponent
+      description="Mochila com Rodas Swiss Digital 17''"
+      oldPrice="R$ 288,99"
+      image="https://snpi.dell.com/snp/images2/300/pt-br~AA188364_V1/AA188364_V1.jpg"
+      newPrice="199,99"
+      plots="3 x 66,66"
+      rating={2}
     />
   </Card.Group>
 );

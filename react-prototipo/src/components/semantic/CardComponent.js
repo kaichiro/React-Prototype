@@ -2,6 +2,16 @@ import React from "react";
 import { Card, Image, Button, Rating } from "semantic-ui-react";
 import { CardComponentProps } from "./CardComponentProps";
 
+// eslint-disable-next-line no-redeclare
+// interface CardComponentProps {
+//   description: string;
+//   oldPrice: string;
+//   image: string;
+//   newPrice: string;
+//   plots: string;
+//   rating: number;
+// }
+
 function CardComponent(props: CardComponentProps) {
   return (
     // <div className="ui link cards four stackable">
