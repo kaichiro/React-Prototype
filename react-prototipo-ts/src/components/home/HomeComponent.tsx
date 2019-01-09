@@ -1,8 +1,13 @@
 import * as React from "react";
-import CardGroupComponent from "../semantic/cardGroup/CardGroupComponent";
+
+import MenuComponent from "../semantic/menu/MenuComponents";
 
 function HomeComponent() {
-  return <CardGroupComponent />;
+  return (
+    <div>
+      <MenuComponent />
+    </div>
+  );
 }
 
 export default HomeComponent;
