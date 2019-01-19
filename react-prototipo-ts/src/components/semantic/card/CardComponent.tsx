@@ -39,14 +39,12 @@ function CardComponent(props: CardComponentProps) {
             <Card.Meta textAlign="right">
               <del>{props.oldPrice}</del>
             </Card.Meta>
-            {/* </Card.Content>
-          <Card.Content extra={true}> */}
             <Card.Description textAlign="center">
               <strong>{props.newPrice}</strong>
             </Card.Description>
-            <Card.Description>{props.plots}</Card.Description>
-            {/* </Card.Content>
-          <Card.Content extra={true}> */}
+            <Card.Description textAlign="center">
+              {props.plots}
+            </Card.Description>
             <div className="ui two buttons">
               <Button basic={true} color="green">
                 Add
@@ -55,8 +53,6 @@ function CardComponent(props: CardComponentProps) {
                 Detail
               </Button>
             </div>
-            {/* </Card.Content>
-          <Card.Content extra={true}> */}
             <br />
             <Rating
               maxRating={5}

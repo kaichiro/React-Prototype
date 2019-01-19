@@ -1,24 +1,12 @@
-Clone this project according to this command just below...
+# UFG - Pós 2018/2019
+##Desenvolvimento Web e Mobile Full Stack
+Trabalho final - Disciplina Programação Front End Avaçado .
 
-NOTE: I have modified the name of the specific project (`react-ts`), but you can change it to any other valid name.
+---
 
-```sh
-git clone https://github.com/kaichiro/React-Prototype.git react-ts
-cd react-ts
-```
+Alunos:
+  * [Kaichiro Fukuda](https://github.com/kaichiro)
+  * [Vitor Santos](https://github.com/VitorSantos1996)
 
-Installing the necessary packages to run the project (`package.json`)
-
-```sh
-npm install
-npm start
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn
-yarn start
-```
-
-If you are using Linux or Mac OS, add `SUDO` before the commands, if necessary.
+  ---
+  

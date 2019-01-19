@@ -1,19 +1,9 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# Other Projects
-food-lookup-demo
-my-app
-yt-react
-react-ts
-react-ts-ykgzug.zip
-PosUFG-PFEA
-primeiro-projeto
-
-# Other Files
-infos.txt
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
+/.pnp
+.pnp.js
 
 # testing
 /coverage
