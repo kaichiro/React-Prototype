@@ -28,6 +28,7 @@ class ProductsByCategory extends Component {
     return (
       <CardProduct
         key={Product.description}
+        id={Product.id}
         description={Product.description}
         image={Product.image}
         newPrice={Product.newPrice}
@@ -47,7 +48,13 @@ class ProductsByCategory extends Component {
           <LoadData texto="Aguarde, carregando produtos..." />
         )}
         {!this.state.isLoading && (
-          <Card.Group centered stackable itemsPerRow={3}>
+          <Card.Group
+            className="ui link cards"
+            centered
+            doubling
+            stackable
+            itemsPerRow={3}
+          >
             {this.state.Products.map(this.renderProducts)}
           </Card.Group>
         )}

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Card, Rating, Image, Button, Icon } from "semantic-ui-react";
-import { formataValorMoedaReal } from "../customs/utils";
+import { Link } from "react-router-dom";
+
+import { formataValorMoedaReal, returnPlots } from "../customs/utils";
 
 const divStyle = { padding: 7, width: 200 };
 const divImage = { height: 180, width: 180, align: "center" };
@@ -8,9 +10,11 @@ const divImage = { height: 180, width: 180, align: "center" };
 class CardProduct extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       isLoading: false,
       Product: {
+        id: props.id,
         description: props.description,
         image: props.image,
         newPrice: props.newPrice,
@@ -20,12 +24,12 @@ class CardProduct extends Component {
         category: props.category
       }
     };
+
+    this.addProductsShop = this.addProductsShop.bind(this);
   }
 
-  // componentDidMount() {}
-
-  returnPlots(plots_, value_) {
-    return plots_ + " X " + formataValorMoedaReal(value_ / plots_);
+  addProductsShop() {
+    alert(this.state.Product.description);
   }
 
   render() {
@@ -51,7 +55,7 @@ class CardProduct extends Component {
               {formataValorMoedaReal(this.state.Product.newPrice)}
             </Card.Header>
             <Card.Description textAlign="center">
-              {this.returnPlots(
+              {returnPlots(
                 this.state.Product.plots,
                 this.state.Product.newPrice
               )}
@@ -60,12 +64,14 @@ class CardProduct extends Component {
             <Card.Content textAlign="center">
               <div style={{ position: "revert" }}>
                 <Button.Group align="center">
-                  <Button>
+                  <Button onClick={this.addProductsShop}>
                     <Icon size="large" link={true} name="cart plus" />
                   </Button>
                   <Button.Or text="ou" />
                   <Button>
-                    <Icon name="eye" size="large" />
+                    <Link to={`/ProductsDetail/${this.state.Product.id}`}>
+                      <Icon name="eye" size="large" />
+                    </Link>
                   </Button>
                 </Button.Group>
               </div>

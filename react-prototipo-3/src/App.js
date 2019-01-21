@@ -8,6 +8,7 @@ import Pedido from "./components/Pedido-component";
 import api from "./api/Api";
 import ProductsByCategory from "./components/ProductsByCategory-component";
 import TopSellingProducts from "./components/TopSellingProducts-component";
+import ProductDetail from "./components/Product.Detail-component";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,16 @@ class App extends Component {
 
   componentDidMount() {
     this._loadCategories();
+    api
+      .loadProducts()
+      .then(res =>
+        this.setState({ Products: [...this.state.Products, res.data[0]] })
+      );
+    api
+      .loadTopSellingProducts()
+      .then(res =>
+        this.setState({ Products: [...this.state.Products, res.data[3]] })
+      );
   }
 
   _loadCategories() {
@@ -34,6 +45,9 @@ class App extends Component {
       <Dropdown.Item key={Category}>
         <Link to={`/Category/${Category}`}>{Category}</Link>
       </Dropdown.Item>
+      // <Link to={`/Category/${Category}`}>
+      //   <Dropdown.Item key={Category}>{Category}</Dropdown.Item>
+      // </Link>
     );
   }
 
@@ -54,6 +68,7 @@ class App extends Component {
             >
               <Link to="/">Home</Link>
             </Menu.Item>
+
             <Menu.Item
               as="div"
               name="pedido"
@@ -86,8 +101,10 @@ class App extends Component {
             </Menu.Item>
             <Menu.Menu position="right">
               <Button animated="vertical">
-                <Button.Content hidden={true}>Shop</Button.Content>
-                <Button.Content visible={true}>
+                <Button.Content hidden>
+                  {this.state.Products.length}
+                </Button.Content>
+                <Button.Content visible>
                   <Icon name="shop" />
                   <sub>{this.state.Products.length}</sub>
                 </Button.Content>
@@ -104,6 +121,7 @@ class App extends Component {
               component={ProductsByCategory}
             />
             <Route exact path="/TopSelling" component={TopSellingProducts} />
+            <Route exact path="/ProductsDetail/:id" component={ProductDetail} />
           </Segment>
         </div>
       </Router>
