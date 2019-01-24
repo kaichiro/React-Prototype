@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { formataValorMoedaReal, returnPlots } from "../customs/utils";
 
-const divStyle = { padding: 7, width: 200 };
+const divStyle = { padding: 7, width: 200  };
 const divImage = { height: 180, width: 180, align: "center" };
 
 class CardProduct extends Component {
@@ -68,11 +68,11 @@ class CardProduct extends Component {
                     <Icon size="large" link={true} name="cart plus" />
                   </Button>
                   <Button.Or text="ou" />
+                  <Link to={`/ProductsDetail/${this.state.Product.id}`}>
                   <Button>
-                    <Link to={`/ProductsDetail/${this.state.Product.id}`}>
                       <Icon name="eye" size="large" />
-                    </Link>
                   </Button>
+                  </Link>
                 </Button.Group>
               </div>
             </Card.Content>
