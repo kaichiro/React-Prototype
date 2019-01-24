@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
-import CardProduct from "./Card.Product-Semantic-component";
 import api from "../api/Api";
 import { ApiTypesActions } from "../customs/utils";
 import LoadData from "./LoadData-component";
+import { Button, Icon } from "semantic-ui-react";
+import CardProductAlternative from "./Card.Product.Alternative-Semantic-component";
 
-class Carousel extends Component {
+class CarouselAlternative extends Component {
   constructor(props) {
     super(props);
 
@@ -50,7 +52,15 @@ class Carousel extends Component {
   renderProducts(Product) {
     return (
       <div key={Product.description}>
-        <CardProduct
+        <Button onClick={() => this.props.addProductToCart(Product.id)}>
+          add
+        </Button>
+        <Button>
+          <Link to={`/ProductsDetail/${Product.id}`}>
+            <Icon name="eye" size="large" />
+          </Link>
+        </Button>
+        <CardProductAlternative
           className="ui link cards"
           id={Product.id}
           description={Product.description}
@@ -60,6 +70,7 @@ class Carousel extends Component {
           plots={Product.plots}
           rating={Product.rating}
           category={Product.category}
+          addProductToCart={this.addProductToCart}
         />
       </div>
     );
@@ -78,6 +89,7 @@ class Carousel extends Component {
     return (
       <div>
         <h2>{this.state.description}</h2>
+        <Button onClick={() => this.props.addProductToCart(10)}>add</Button>
         <section>
           {this.state.isLoading && (
             <LoadData texto="Aguarde, carregando produtos..." />
@@ -93,4 +105,4 @@ class Carousel extends Component {
   }
 }
 
-export default Carousel;
+export default CarouselAlternative;

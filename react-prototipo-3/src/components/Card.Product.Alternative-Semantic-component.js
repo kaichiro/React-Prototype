@@ -7,7 +7,7 @@ import { formataValorMoedaReal, returnPlots } from "../customs/utils";
 const divStyle = { padding: 7, width: 200 };
 const divImage = { height: 180, width: 180, align: "center" };
 
-class CardProduct extends Component {
+class CardProductAlternative extends Component {
   constructor(props) {
     super(props);
 
@@ -24,12 +24,6 @@ class CardProduct extends Component {
         category: props.category
       }
     };
-
-    this.addProductsShop = this.addProductsShop.bind(this);
-  }
-
-  addProductsShop() {
-    alert(this.state.Product.description);
   }
 
   render() {
@@ -64,7 +58,11 @@ class CardProduct extends Component {
             <Card.Content textAlign="center">
               <div style={{ position: "revert" }}>
                 <Button.Group align="center">
-                  <Button onClick={this.addProductsShop}>
+                  <Button
+                    // onClick={() =>
+                    //   this.props.addProductToCart(this.state.Product.id)
+                    // }
+                  >
                     <Icon size="large" link={true} name="cart plus" />
                   </Button>
                   <Button.Or text="ou" />
@@ -90,4 +88,4 @@ class CardProduct extends Component {
   }
 }
 
-export default CardProduct;
+export default CardProductAlternative;

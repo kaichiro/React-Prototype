@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Menu, Segment, Dropdown, Button, Icon } from "semantic-ui-react";
+import { Menu, Segment, Dropdown, Icon, Button } from "semantic-ui-react";
 
 import Home from "./components/Home-component";
 import Pedido from "./components/Pedido-component";
@@ -9,6 +9,8 @@ import api from "./api/Api";
 import ProductsByCategory from "./components/ProductsByCategory-component";
 import TopSellingProducts from "./components/TopSellingProducts-component";
 import ProductDetail from "./components/Product.Detail-component";
+import CarouselAlternative from "./components/Carousel.Alternative-component";
+import { ApiTypesActions } from "./customs/utils";
 
 class App extends Component {
   constructor(props) {
@@ -18,20 +20,24 @@ class App extends Component {
 
     this._loadCategories = this._loadCategories.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
+    this.addProductToCart = this.addProductToCart.bind(this);
+    this.clearProduct = this.clearProduct.bind(this);
+  }
+
+  clearProduct() {
+    this.setState({ Products: [] });
+  }
+
+  addProductToCart(id) {
+    api
+      .loadProductById(id)
+      .then(res =>
+        this.setState({ Products: [...this.state.Products, res.data] })
+      );
   }
 
   componentDidMount() {
     this._loadCategories();
-    api
-      .loadProducts()
-      .then(res =>
-        this.setState({ Products: [...this.state.Products, res.data[0]] })
-      );
-    api
-      .loadTopSellingProducts()
-      .then(res =>
-        this.setState({ Products: [...this.state.Products, res.data[3]] })
-      );
   }
 
   _loadCategories() {
@@ -45,16 +51,13 @@ class App extends Component {
       <Dropdown.Item key={Category}>
         <Link to={`/Category/${Category}`}>{Category}</Link>
       </Dropdown.Item>
-      // <Link to={`/Category/${Category}`}>
-      //   <Dropdown.Item key={Category}>{Category}</Dropdown.Item>
-      // </Link>
     );
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem } = this.state;
+    const { activeItem, Products } = this.state;
 
     return (
       <Router>
@@ -67,15 +70,6 @@ class App extends Component {
               onClick={this.handleItemClick}
             >
               <Link to="/">Home</Link>
-            </Menu.Item>
-
-            <Menu.Item
-              as="div"
-              name="pedido"
-              active={activeItem === "pedido"}
-              onClick={this.handleItemClick}
-            >
-              <Link to={`/Pedido/${"NotebookK"}`}>Pedido</Link>
             </Menu.Item>
 
             <Menu.Menu>
@@ -100,21 +94,48 @@ class App extends Component {
               <Link to={`/TopSelling`}>Mais vendidos</Link>
             </Menu.Item>
             <Menu.Menu position="right">
-              <Button animated="vertical">
-                <Button.Content hidden>
-                  {this.state.Products.length}
-                </Button.Content>
-                <Button.Content visible>
+              <Menu.Item
+                as="div"
+                name="pedido"
+                active={activeItem === "pedido"}
+                onClick={this.handleItemClick}
+              >
+                <Link to={`/Pedido`}>
                   <Icon name="shop" />
-                  <sub>{this.state.Products.length}</sub>
-                </Button.Content>
-              </Button>
+                </Link>
+                <sup>{Products.length}</sup>
+              </Menu.Item>
             </Menu.Menu>
           </Menu>
-
           <Segment>
+            <Segment>
+              <Button
+                onClick={() => {
+                  this.clearProduct();
+                }}
+              >
+                clear shop
+              </Button>
+              <Button
+                onClick={() => {
+                  this.addProductToCart(10);
+                }}
+              >
+                add prod 10
+              </Button>
+            </Segment>
+            <Segment>
+              <Segment>{JSON.stringify(this.state.Products)}</Segment>
+              <CarouselAlternative
+                description="TODOS"
+                products={[]}
+                apiTypesActions={ApiTypesActions.loadProducts}
+                category={"x"}
+                addProductToCart={this.addProductToCart}
+              />
+            </Segment>
             <Route exact path="/" component={Home} />
-            <Route exact path="/Pedido/:category" component={Pedido} />
+            <Route exact path="/Pedido" component={Pedido} />
             <Route
               exact
               path="/Category/:category"

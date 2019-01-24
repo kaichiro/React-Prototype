@@ -23,76 +23,68 @@ class ProductDetail extends Component {
 
   render() {
     return (
-      
-        
-        <Segment style={{width:1000}}>
-
-              <h1>{this.state.product.description}</h1>
-
-          
-              <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                  <div class="eight wide column">
-                    <Image ui large bordered rounded image src={this.state.product.image}/>   
-                  </div>
-                  <div class="six wide centered column">
-                    <div class="ui middle aligned stackable grid container">
-                      <div style={{padding:0}} class="row middle centered">
-                        <label><sub><del> De {formataValorMoedaReal(this.state.product.oldPrice + 0)} </del></sub></label>
-                      </div>
-                      <div style={{padding:0}} class="row middle centered">
-                        <label>
-                          Por{" "}
-                          {(this.state.product.newPrice + 0).toLocaleString("pt-BR", {
-                            style: "currency",
-                            currency: "BRL"
-                          })}
-                        </label>
-                      </div>          
-                      <div style={{padding:0}} class="row middle centered">
-                        <label>
-                          {returnPlots(
-                            this.state.product.plots + 0,
-                            this.state.product.newPrice + 0
-                          )}
-                        </label>
-                      </div>
-                      <div style={{}} class="row middle centered">
-                        <Rating
-                          maxRating={5}
-                          // defaultRating={2}
-                          defaultRating={Number.parseInt(this.state.product.Rating) + 0}
-                          icon="star"
-                          size="mini"
-                          disabled
-                        />
-                      </div>
-                      <div style={{padding:0}} class="row middle centered">
-                        <button class="ui button"> ADICIONAR AO CARRINHO &nbsp; <i class="shop icon"></i> </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-              <div>Categoria: {this.state.product.category}</div>
-            
-          
-
-          
-          
-          <Segment>
+      <div>
+        <Segment>
+          <Image
+            src={this.state.product.image}
+            size="large"
+            floated="left"
+            bordered
+            centered
+            // circular
+            // fluid
+            // inline
+            // rounded
+            ui
+            wrapped
+          />
+          <div style={{ height: 30 }} />
+          <div>
             <h1>{this.state.product.description}</h1>
-            <div>
-              {this.state.product.infos}
-            </div>
-          </Segment>
-          
-          
-          
-
+          </div>
+          <div style={{ height: 30 }} />
+          <div>Categoria: {this.state.product.category}</div>
+          <div style={{ height: 60 }} />
+          <div>{this.state.product.infos}</div>
+          <div style={{ height: 90 }} />
+          <div>
+            <sub>
+              <del>
+                Era {formataValorMoedaReal(this.state.product.oldPrice + 0)}
+              </del>
+            </sub>
+          </div>
+          <div style={{ height: 30 }} />
+          <div>
+            <h3>
+              Agora{" "}
+              {(this.state.product.newPrice + 0).toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+              })}
+            </h3>
+          </div>
+          <div style={{ height: 30 }} />
+          <div>
+            <p>
+              {returnPlots(
+                this.state.product.plots + 0,
+                this.state.product.newPrice + 0
+              )}
+            </p>
+          </div>
+          <div style={{ height: 30 }} />
+          <div>
+            <Rating
+              maxRating={5}
+              defaultRating={this.state.product.rating}
+              icon="star"
+              size="mini"
+              disabled
+            />
+          </div>
         </Segment>
-        
+      </div>
     );
   }
 }

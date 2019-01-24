@@ -47,7 +47,6 @@ class Home extends Component {
               products={[]}
               apiTypesActions={ApiTypesActions.loadTopSellingProducts}
               category={"x"}
-              centered
             />
           </div>
           <br />
