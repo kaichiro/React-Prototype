@@ -126,13 +126,13 @@ class App extends Component {
             </Segment>
             <Segment>
               <Segment>{JSON.stringify(this.state.Products)}</Segment>
-              <CarouselAlternative
+              {/* <CarouselAlternative
                 description="TODOS"
                 products={[]}
                 apiTypesActions={ApiTypesActions.loadProducts}
                 category={"x"}
                 addProductToCart={this.addProductToCart}
-              />
+              /> */}
             </Segment>
             <Route exact path="/" component={Home} />
             <Route exact path="/Pedido" component={Pedido} />
